@@ -1,0 +1,65 @@
+[
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/mona_lisa.jpg.webp",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/Meisje met de parel.jpg",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/As Meninas.jpg",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/mona_lisa.jpg.webp",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/Meisje met de parel.jpg",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/As Meninas.jpg",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/mona_lisa.jpg.webp",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/Meisje met de parel.jpg",
+        "artist":"Ferrari"
+    },
+    {
+        "type":"Car",
+        "title":"Ferrari",
+        "medium":"Ferrari",
+        "image": "images/As Meninas.jpg",
+        "artist":"Ferrari"
+    }
+]
