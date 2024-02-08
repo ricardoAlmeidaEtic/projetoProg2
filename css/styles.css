@@ -49,6 +49,22 @@ body{
     margin-bottom: -10px;
 }
 
+#galeriaDisplay{
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    perspective: 10em;
+    perspective-origin: 50% calc(50% - 2em);
+    overflow: hidden;
+}
+
+.seta{
+    cursor: pointer; 
+}
+
 /* OTHER */
 
 figure {
