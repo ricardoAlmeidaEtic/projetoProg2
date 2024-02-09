@@ -1,40 +1,4 @@
-class PecaDeArte {
-
-    type
-    title
-    medium
-    image
-    artist
-    
-    constructor(data){
-        this.type = data.type
-        this.title = data.title
-        this.medium = data.medium
-        this.image = data.image
-        this.artist = data.artist
-    }
-
-    getType(){
-        return this.type
-    }
-
-    getTitle(){
-        return this.title
-    }
-
-    getMedium(){
-        return this.medium
-    }
-
-    getImage(){
-        return this.image
-    }
-
-    getArtist(){
-        return this.artist
-    }
-       
-}
+import PecaDeArte from "./PecaDeArte.js";
 
 let galeria = null;
 
@@ -57,10 +21,12 @@ const loadData = (data) =>{
 
 const showElement = (i) =>{
     const galeriaDisplayElemento = document.querySelector("#galeriaDisplay");
+
     if(galeria[i]){
         galeriaDisplayElemento.style.display="flex";
-        galeriaDisplayElemento.innerHTML = renderSlideShow(i, galeria[i])
+        galeriaDisplayElemento.innerHTML = renderSlideShow(i, galeria[i], galeria)
         galeriaDisplayElemento.scrollIntoView();
+        nextElementEvents(i)
         let el = document.getElementById('display')
         
         const height = el.clientHeight
@@ -95,97 +61,39 @@ const showElement = (i) =>{
     }
 }
 
-const renderSlideShow = (i,item) =>{
-    let classe = ""
+const loadGalleryEvents = (galeria) =>{
+    for(let i = 0; i<galeria.length;i++){
+        document.getElementById(i).onclick = () =>{
+            showElement(i);
+        }
+    };
+}
 
-    if(i === 0)
-        classe="right"
-    if(i === galeria.length-1)
-        classe="left"
-
-    render =  `
-        <div class="room">
-            <div class="diagonal-line top-left-line"></div>
-            <div class="diagonal-line top-right-line"></div>
-            <div class="diagonal-line bottom-left-line"></div>
-            <div class="diagonal-line bottom-right-line"></div>
-            <div class="wall ${classe}">`
-    if(galeria[i-1])
-        render +=
-            `<a class="prev seta" onclick="showElement(${i-1})">&#10094;</a>`
-
-    render += renderElement(i,item, "display")
+const nextElementEvents = (i) =>{
+    document.getElementById("next").onclick = () =>{
+        if(i !== galeria.length-1)
+            showElement(i+1);
+        else
+            showElement(0);
+        
+    }
     
-    if(galeria[i+1])
-        render +=  `
-            <a class="next seta" onclick="showElement(${i+1})">&#10095;</a>`
+    document.getElementById("prev").onclick = () =>{
+        if(i !== 0)
+            showElement(i-1);
+        else
+            showElement(galeria.length-1);
+    }
 
-        render +=  `
-            </div>
-            ${renderElementDescription(item)}
-        </div>
-        `
-
-    return render
-}
-
-const renderElement = (i,item, id="") =>{
-    return `<div class="galeriaElemento" onclick="showElement(${i})">
-                <figure id="${id}">
-                    <div class="outerBevel">
-                        <div class="flatSurface">
-                            <div class="innerBevel">
-                                <img src="${item.getImage()}">
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-            </div>
-            `
-}
-
-const renderElementDescription = (item) =>{
-    return `<div class="galleryElementDescription">
-                <ul>
-                    <li>Tipo: ${item.getType()}</li>
-                    <li>Titulo: ${item.getTitle()}</li>
-                    <li>Medium: ${item.getMedium()}</li>
-                    <li>Artist: ${item.getArtist()}</li>
-                </ul>
-            </div>
-            `
-}
-
-const renderRowElement = (part) =>{
-    if(part === 1)
-        return `<div class="galeriaRow">`
-    
-    return `</div>`
 }
 
 window.onload = async() =>{
     let i = 0;
     const data = await getData();
     galeria = loadData(data)
-    const body = document.querySelector("#galeria");
-    let content = ""
+    const divGallery = document.querySelector("#galeria");
+    divGallery.innerHTML = renderGallery(galeria)
 
-    galeria.forEach(item => {
-        if (i % 3 === 0) {
-            content += renderRowElement(1)
-        }
-
-        content += renderElement(i,item)
-
-        if ((i + 1) % 3 === 0 || i === (galeria.length-1)) {
-            content += renderRowElement(2)
-        }
-
-        i++
-
-    });
-
-    body.innerHTML += content
-
+    loadGalleryEvents(galeria)
     
 }
