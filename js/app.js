@@ -57,33 +57,106 @@ const loadData = (data) =>{
 
 const showElement = (i) =>{
     const galeriaDisplayElemento = document.querySelector("#galeriaDisplay");
-    if(galeria[i])
+    if(galeria[i]){
         galeriaDisplayElemento.innerHTML = renderSlideShow(i, galeria[i])
         galeriaDisplayElemento.scrollIntoView();
+        /* Store the element in el */
+        let el = document.getElementById('display')
+        
+        /* Get the height and width of the element */
+        const height = el.clientHeight
+        const width = el.clientWidth
+
+        /*
+        * Add a listener for mousemove event
+        * Which will trigger function 'handleMove'
+        * On mousemove
+        */
+        el.addEventListener('mousemove', handleMove)
+
+        /* Define function a */
+        function handleMove(e) {
+        /*
+            * Get position of mouse cursor
+            * With respect to the element
+            * On mouseover
+            */
+        /* Store the x position */
+        const xVal = e.layerX
+        /* Store the y position */
+        const yVal = e.layerY
+        
+        /*
+            * Calculate rotation valuee along the Y-axis
+            * Here the multiplier 20 is to
+            * Control the rotation
+            * You can change the value and see the results
+            */
+        const yRotation = 20 * ((xVal - width / 2) / width)
+        
+        /* Calculate the rotation along the X-axis */
+        const xRotation = -20 * ((yVal - height / 2) / height)
+        
+        /* Generate string for CSS transform property */
+        const string = 'perspective(500px) scale(1.1) rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)'
+        
+        /* Apply the calculated transformation */
+        el.style.transform = string
+        }
+
+        /* Add listener for mouseout event, remove the rotation */
+        el.addEventListener('mouseout', function() {
+        el.style.transform = 'perspective(500px) scale(1) rotateX(0) rotateY(0)'
+        })
+
+        /* Add listener for mousedown event, to simulate click */
+        el.addEventListener('mousedown', function() {
+        el.style.transform = 'perspective(500px) scale(0.9) rotateX(0) rotateY(0)'
+        })
+
+        /* Add listener for mouseup, simulate release of mouse click */
+        el.addEventListener('mouseup', function() {
+        el.style.transform = 'perspective(500px) scale(1.1) rotateX(0) rotateY(0)'
+        })
+    }
 }
 
 const renderSlideShow = (i,item) =>{
-    return `
-        <div class="scene">
-            <div class="cube">
-                <div class="cube__face cube__face--front">front</div>
-                <div class="cube__face cube__face--back">back</div>
-                <div class="cube__face cube__face--right">right</div>
-                <div class="cube__face cube__face--left">left</div>
-                <div class="cube__face cube__face--top">top</div>
-                <div class="cube__face cube__face--bottom">bottom</div>
-                
-                <a class="prev seta" onclick="showElement(${i-1})">&#10094;</a>
-                    ${renderElement(i,item)}
-                <a class="next seta" onclick="showElement(${i+1})">&#10095;</a>
+    let classe = ""
+
+    if(i === 0)
+        classe="right"
+    if(i === galeria.length-1)
+        classe="left"
+
+    render =  `
+        <div class="room">
+            <div class="diagonal-line top-left-line"></div>
+            <div class="diagonal-line top-right-line"></div>
+            <div class="diagonal-line bottom-left-line"></div>
+            <div class="diagonal-line bottom-right-line"></div>
+            <div class="wall ${classe}">`
+    if(galeria[i-1])
+        render +=
+            `<a class="prev seta" onclick="showElement(${i-1})">&#10094;</a>`
+
+    render += renderElement(i,item, "display")
+    
+    if(galeria[i+1])
+        render +=  `
+            <a class="next seta" onclick="showElement(${i+1})">&#10095;</a></div>`
+    
+    render +=  `
             </div>
         </div>
     `
+
+    return render
 }
 
-const renderElement = (i,item) =>{
+const renderElement = (i,item, id="") =>{
     return `<div class="galeriaElemento" onclick="showElement(${i})">
-                <figure>
+                <figure id="${id}">
                     <div class="outerBevel">
                         <div class="flatSurface">
                             <div class="innerBevel">
@@ -92,10 +165,7 @@ const renderElement = (i,item) =>{
                         </div>
                     </div>
                 </figure>
-                <h1>${item.getType()}</h1>
-                <h1>${item.getTitle()}</h1>
-                <h1>${item.getMedium()}</h1>
-                <h1>${item.getArtist()}</h1>
+                
             </div>
             `
 }
@@ -130,4 +200,6 @@ window.onload = async() =>{
     });
 
     body.innerHTML += content
+
+    
 }
