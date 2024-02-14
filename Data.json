@@ -1,65 +1,38 @@
 [
     {
-        "type":"Car",
-        "title":"Ferrari",
+        "type":"paiting",
+        "title":"Ferrari1",
         "medium":"Ferrari",
-        "image": "images/mona_lisa.jpg.webp",
-        "artist":"Ferrari"
+        "content": "content/images/mona_lisa.jpg.webp",
+        "artist":"Ferrari1"
     },
     {
-        "type":"Car",
-        "title":"Ferrari",
+        "type":"paiting",
+        "title":"Ferrari2",
         "medium":"Ferrari",
-        "image": "images/Meisje met de parel.jpg",
-        "artist":"Ferrari"
+        "content": "content/images/Meisje met de parel.jpg",
+        "artist":"Ferrari2"
     },
     {
-        "type":"Car",
-        "title":"Ferrari",
+        "type":"paiting",
+        "title":"Ferrari3",
         "medium":"Ferrari",
-        "image": "images/As Meninas.jpg",
-        "artist":"Ferrari"
+        "content": "content/images/As Meninas.jpg",
+        "artist":"Ferrari3"
     },
     {
-        "type":"Car",
-        "title":"Ferrari",
+        "type":"music",
+        "title":"Rose's Turn",
         "medium":"Ferrari",
-        "image": "images/mona_lisa.jpg.webp",
-        "artist":"Ferrari"
+        "content": "content/images/MV5BNjk3MzU4ODg2NV5BMl5BanBnXkFtZTYwNzIwNDE5._V1_.jpg",
+        "music":"https://www.youtube.com/watch?v=7YSG1EXSOP8&ab_channel=BetteMidler-Topic",
+        "artist":"Bette Midler"
     },
     {
-        "type":"Car",
-        "title":"Ferrari",
+        "type":"sculpture",
+        "title":"Bust of Nefertiti",
         "medium":"Ferrari",
-        "image": "images/Meisje met de parel.jpg",
-        "artist":"Ferrari"
-    },
-    {
-        "type":"Car",
-        "title":"Ferrari",
-        "medium":"Ferrari",
-        "image": "images/As Meninas.jpg",
-        "artist":"Ferrari"
-    },
-    {
-        "type":"Car",
-        "title":"Ferrari",
-        "medium":"Ferrari",
-        "image": "images/mona_lisa.jpg.webp",
-        "artist":"Ferrari"
-    },
-    {
-        "type":"Car",
-        "title":"Ferrari",
-        "medium":"Ferrari",
-        "image": "images/Meisje met de parel.jpg",
-        "artist":"Ferrari"
-    },
-    {
-        "type":"Car",
-        "title":"Ferrari",
-        "medium":"Ferrari",
-        "image": "images/As Meninas.jpg",
-        "artist":"Ferrari"
+        "content": "content/images/Nofretete_Neues_Museum.jpg",
+        "artist":"Thutmose"
     }
 ]
