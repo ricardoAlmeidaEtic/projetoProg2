@@ -17,7 +17,7 @@ export default class Gallery {
             case "music":
                 nextPeace = new Music(peaceOfArt);
                 break;
-            case "paiting":
+            case "painting":
                 nextPeace = new Painting(peaceOfArt);
                 break;
             case "sculpture":
@@ -27,6 +27,10 @@ export default class Gallery {
                 break;
         }
         this.peacesOfArt.push(nextPeace);
+    }
+
+    remove(index){
+        this.peacesOfArt.splice(index,1);
     }
 
     set peacesOfArt(peacesOfArt){

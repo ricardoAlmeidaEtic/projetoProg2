@@ -1,6 +1,8 @@
 const renderSlideShow = (i,item) =>{
-    if(item.type === "paiting"){
-        let render =  `
+    let render =  ` 
+        <button id='close'>close</button>`;
+    if(item.type === "painting"){
+        render +=  `
             <div class="room">
                 <div class="diagonal-line top-left-line"></div>
                 <div class="diagonal-line top-right-line"></div>
@@ -22,7 +24,7 @@ const renderSlideShow = (i,item) =>{
             `
             return render
     } else if (item.type === "sculpture"){
-        let render =  `
+        render +=  `
             <div class="room">
                 <div class="diagonal-line top-left-line"></div>
                 <div class="diagonal-line top-right-line"></div>
@@ -45,7 +47,7 @@ const renderSlideShow = (i,item) =>{
             return render
     }
 
-    let render = `
+    render += `
             <div class="room">
                 <div class="diagonal-line top-left-line"></div>
                 <div class="diagonal-line top-right-line"></div>
@@ -55,9 +57,9 @@ const renderSlideShow = (i,item) =>{
                 <div class="wall">
                     <a class="prev seta" id="prev">&#10094;</a>
 
-                    <img src="../content/images/pause.png" class="icon" id="time"></img>
+                    <img src="content/images/pause.png" class="icon" id="time"></img>
                     <audio src="${item.music}" id="audio"></audio>
-                    <img src="../content/images/mute.png" class="icon" id="sound"></img>
+                    <img src="content/images/mute.png" class="icon" id="sound"></img>
 
                     <a class="next seta" id="next">&#10095;</a>
 

@@ -4,6 +4,7 @@ const galeria = new Gallery("Galeria");
 
 let mute = false;
 let pause = false;
+let limite = 5;
 
 const getData = async() =>{
     const request = await fetch("./Data.json");
@@ -14,11 +15,16 @@ const getData = async() =>{
 
 const loadData = (data,galeria) =>{
 
+    let i = 0;
+    
     data.forEach(item => {
+        if(i === limite)
+            return
+        
         galeria.add(item);
+        i++;
     });
 
-    console.log(galeria.peacesOfArt);
 }
 
 const showElement = (i) =>{
@@ -28,10 +34,11 @@ const showElement = (i) =>{
         galeriaDisplayElemento.style.display="flex";
         galeriaDisplayElemento.innerHTML = renderSlideShow(i, galeria.peacesOfArt[i])
         galeriaDisplayElemento.scrollIntoView();
+
         loadNextElementEvents(i)
         if(galeria.peacesOfArt[i].type === "music"){
             loadMusicElementEvents(i)
-        } else{
+        } else if(galeria.peacesOfArt[i].type === "painting"){
 
             /* SAMPLE CODE */
             let el = document.getElementById('display')
@@ -68,6 +75,10 @@ const showElement = (i) =>{
             /* SAMPLE CODE */
 
         }
+
+        document.getElementById('close').onclick = () =>{
+            document.getElementById('galeriaDisplay').style.removeProperty('display');
+        }
     }
 }
 
@@ -77,6 +88,7 @@ const loadGalleryEvents = (galeria) =>{
             showElement(i);
         }
     };
+
 }
 
 const loadNextElementEvents = (i) =>{

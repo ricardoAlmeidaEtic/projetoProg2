@@ -1,20 +1,20 @@
 [
     {
-        "type":"paiting",
+        "type":"painting",
         "title":"Ferrari1",
         "medium":"Ferrari",
         "content": "content/images/mona_lisa.jpg.webp",
         "artist":"Ferrari1"
     },
     {
-        "type":"paiting",
+        "type":"painting",
         "title":"Ferrari2",
         "medium":"Ferrari",
         "content": "content/images/Meisje met de parel.jpg",
         "artist":"Ferrari2"
     },
     {
-        "type":"paiting",
+        "type":"painting",
         "title":"Ferrari3",
         "medium":"Ferrari",
         "content": "content/images/As Meninas.jpg",
